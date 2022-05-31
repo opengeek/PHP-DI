@@ -73,15 +73,8 @@ abstract class CompiledContainer extends Container
     /**
      * {@inheritdoc}
      */
-    public function has($name)
+    public function has(string $name): bool
     {
-        if (! is_string($name)) {
-            throw new \InvalidArgumentException(sprintf(
-                'The name parameter must be of type string, %s given',
-                is_object($name) ? get_class($name) : gettype($name)
-            ));
-        }
-
         // The parent method is overridden to check in our array, it avoids resolving definitions
         if (isset(static::METHOD_MAPPING[$name])) {
             return true;

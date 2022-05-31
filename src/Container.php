@@ -207,15 +207,8 @@ class Container implements ContainerInterface, FactoryInterface, InvokerInterfac
      * @throws InvalidArgumentException The name parameter must be of type string.
      * @return bool
      */
-    public function has($name)
+    public function has(string $name): bool
     {
-        if (! is_string($name)) {
-            throw new InvalidArgumentException(sprintf(
-                'The name parameter must be of type string, %s given',
-                is_object($name) ? get_class($name) : gettype($name)
-            ));
-        }
-
         if (array_key_exists($name, $this->resolvedEntries)) {
             return true;
         }
